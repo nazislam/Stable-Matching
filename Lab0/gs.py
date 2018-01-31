@@ -25,17 +25,38 @@ print()
 print()
 
 
-# works: but needs improvement
 print('Preferences:')
+
+def producePreferences(suitor):
+    suitor = random.shuffle(girls)
+    return suitor
+
 for suitor in suitors:
-    name = suitor
-    suitor = []
-    random.shuffle(girls)
-    suitor = girls
-    print(name, ': ', end='')
-    for girl in suitor:
+    preference = producePreferences(suitor)
+    print(suitor, ': ' , end='')
+    for girl in preference:
         print(girl, end='  ')
-    print()
+        print()
+
+
+
+
+
+
+
+
+
+# # works: but needs improvement
+# print('Preferences:')
+# for suitor in suitors:
+#     name = suitor
+#     suitor = []
+#     random.shuffle(girls)
+#     suitor = girls
+#     print(name, ': ', end='')
+#     for girl in suitor:
+#         print(girl, end='  ')
+#     print()
 
 
 
