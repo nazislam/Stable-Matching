@@ -32,12 +32,15 @@ def producePreferences(suitor):
     return suitor
 
 for suitor in suitors:
-    preference = producePreferences(suitor)
-    print(suitor, ': ' , end='')
-    for girl in preference:
+    name = suitor
+    random.shuffle(girls)
+    suitor = girls 
+    print(name, ': ' , end='')
+    for girl in suitor:
         print(girl, end='  ')
-        print()
+    print()
 
+print('----')
 
 
 
