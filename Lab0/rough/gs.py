@@ -20,17 +20,19 @@ for i in range(0, len(girls)):
     girls_pref.append(boys)
     boys = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
 
-for i in range(0, len(boys)):
-    print(boys[i], ':', end='  ')
-    for j in boys_pref[i]:
-        print(j, end='  ')
-    print()
+def print_boys_preferences():
+    for i in range(0, len(boys)):
+        print(boys[i], ':', end='  ')
+        for j in boys_pref[i]:
+            print(j, end='  ')
+        print()
 
-for i in range(0, len(girls)):
-    print(girls[i], ':', end='  ')
-    for i in girls_pref[i]:
-        print(i, end='  ')
-    print()
+def print_girls_preferences():
+    for i in range(0, len(girls)):
+        print(girls[i], ':', end='  ')
+        for i in girls_pref[i]:
+            print(i, end='  ')
+        print()
 
 
 def init_free_men():
@@ -83,20 +85,16 @@ def begin_matching(man):
 
 
 def main():
+    print_boys_preferences()
+    print_girls_preferences()
     init_free_men()
     stable_matching()
 
-    print('COMPLETE LIST OF ACCEPTANCE')
+    print()
+    print('Pairing:')
     print(tentative_engagements)
 
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
 
