@@ -3,15 +3,15 @@
 import random
 
 
-def produce_preference_for_suitors(suitors, girls, suitors_pref):
-    for i in range(0, len(suitors)):
-        random.shuffle(girls)
-        suitors_pref.append(girls)
-
-def produce_preference_for_girls(suitors, girls, girls_pref):
-    for i in range(0, len(girls)):
-        random.shuffle(suitors)
-        girls_pref.append(suitors)
+# def produce_preference_for_suitors(suitors, girls, suitors_pref):
+#     for i in range(0, len(suitors)):
+#         random.shuffle(girls)
+#         suitors_pref.append(girls)
+# 
+# def produce_preference_for_girls(suitors, girls, girls_pref):
+#     for i in range(0, len(girls)):
+#         random.shuffle(suitors)
+#         girls_pref.append(suitors)
 
 def print_suitors_preferences(suitors, suitors_pref):
     for i in range(0, len(suitors)):
@@ -81,11 +81,8 @@ def print_participants(suitors, girls):
     print()
 
 def main():
-#     suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
-#     girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan']
-
-    suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed']
-    girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve']
+    suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
+    girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan']
 
 
     print('\nParticipants:')
@@ -96,8 +93,16 @@ def main():
 
     free_men = []
 
-    produce_preference_for_suitors(suitors, girls, suitors_pref)
-    produce_preference_for_girls(suitors, girls, girls_pref)
+    for i in range(0, len(suitors)):
+        random.shuffle(girls)
+        suitors_pref.append(girls)
+        girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan']
+
+    for i in range(0, len(girls)):
+        random.shuffle(suitors)
+        girls_pref.append(suitors)
+        suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
+    
 
     print('\nPreferences:')
     print_suitors_preferences(suitors, suitors_pref)
