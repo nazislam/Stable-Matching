@@ -61,16 +61,16 @@ def begin_matching(man):
             print('{} is engaged to {}'.format(man, woman))
             break
         elif (len(taken_match) > 0):
-            print('{} is taken already...'.format(woman))
+            # print('{} is taken already...'.format(woman))
 
             current_guy = girls_pref[girls.index(woman)].index(taken_match[0][0])
             potential_guy = girls_pref[girls.index(woman)].index(man)
 
-            if (current_guy < potential_guy):
-                print('She is satisfied with {}'.format(taken_match[0][0]))
-            else:
-                print('{} is better than {}'.format(man, taken_match[0][0]))
-                print('Making {} free again... and then tentatively accept dance between {} and {}'.format(taken_match[0][0], man, woman))
+            if (current_guy > potential_guy):
+                # print('She is satisfied with {}'.format(taken_match[0][0]))
+            # else:
+                print('{} dumps {}'.format(woman, man))
+                # print('Making {} free again... and then tentatively accept dance between {} and {}'.format(taken_match[0][0], man, woman))
 
                 # the new guy is engaged
                 free_men.remove(man)
