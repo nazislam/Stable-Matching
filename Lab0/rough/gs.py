@@ -82,7 +82,9 @@ def begin_matching(man):
                 taken_match[0][0] = man
                 break
 
-
+def print_pairings():
+    for couple in tentative_engagements:
+        print('{} - {}'.format(couple[0], couple[1]))
 
 def main():
     print_boys_preferences()
@@ -92,7 +94,8 @@ def main():
 
     print()
     print('Pairing:')
-    print(tentative_engagements)
+    print_pairings()
+
 
 
 if __name__ == '__main__':
