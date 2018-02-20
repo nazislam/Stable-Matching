@@ -2,32 +2,25 @@
 
 import random
 
-boys = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
-girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan']
 
-boys_pref = []
-girls_pref = []
+def produce_preference_for_suitors(suitors, girls, suitors_pref):
+    for i in range(0, len(suitors)):
+        random.shuffle(girls)
+        suitors_pref.append(girls)
 
-free_men = []
+def produce_preference_for_girls(suitors, girls, girls_pref):
+    for i in range(0, len(girls)):
+        random.shuffle(suitors)
+        girls_pref.append(suitors)
 
-# producing random preference for boys and girls
-for i in range(0, len(boys)):
-    random.shuffle(girls)
-    boys_pref.append(girls)
-    girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan']
-for i in range(0, len(girls)):
-    random.shuffle(boys)
-    girls_pref.append(boys)
-    boys = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
-
-def print_boys_preferences():
-    for i in range(0, len(boys)):
-        print(boys[i], ':', end='  ')
-        for j in boys_pref[i]:
+def print_suitors_preferences(suitors, suitors_pref):
+    for i in range(0, len(suitors)):
+        print(suitors[i], ':', end='  ')
+        for j in suitors_pref[i]:
             print(j, end='  ')
         print()
 
-def print_girls_preferences():
+def print_girls_preferences(girls, girls_pref):
     for i in range(0, len(girls)):
         print(girls[i], ':', end='  ')
         for i in girls_pref[i]:
@@ -35,21 +28,18 @@ def print_girls_preferences():
         print()
 
 
-def init_free_men():
-    for boy in boys:
+def init_free_men(suitors, free_men):
+    for boy in suitors:
         free_men.append(boy)
 
-def stable_matching():
+def stable_matching(free_men, suitors, suitors_pref, girls_pref, tentative_engagements, girls):
     while(len(free_men) > 0):
         for man in free_men:
-            begin_matching(man)
+            begin_matching(man, suitors, suitors_pref, girls_pref, free_men, tentative_engagements, girls)
 
-# people that 'may' be end up together
-tentative_engagements = []
-
-def begin_matching(man):
-    index = boys.index(man)
-    for woman in boys_pref[index]:
+def begin_matching(man, suitors, suitors_pref, girls_pref, free_men, tentative_engagements, girls):
+    index = suitors.index(man)
+    for woman in suitors_pref[index]:
 
         print('{} proposes to {}'.format(man, woman))
         # 0 means woman is single 
@@ -78,18 +68,49 @@ def begin_matching(man):
                 taken_match[0][0] = man
                 break
 
-def print_pairings():
+def print_pairings(tentative_engagements):
     for couple in tentative_engagements:
         print('{} - {}'.format(couple[0], couple[1]))
 
+def print_participants(suitors, girls):
+    for suitor in suitors:
+        print(suitor, end=' ')
+    print()
+    for girl in girls:
+        print(girl, end=' ')
+    print()
+
+def main():
+#     suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
+#     girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan']
+
+    suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed']
+    girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve']
 
 
+    print('\nParticipants:')
+    print_participants(suitors, girls)
 
-print_boys_preferences()
-print_girls_preferences()
-init_free_men()
-stable_matching()
+    suitors_pref = []
+    girls_pref = []
 
-print()
-print('Pairing:')
-print_pairings()
+    free_men = []
+
+    produce_preference_for_suitors(suitors, girls, suitors_pref)
+    produce_preference_for_girls(suitors, girls, girls_pref)
+
+    print('\nPreferences:')
+    print_suitors_preferences(suitors, suitors_pref)
+    print_girls_preferences(girls, girls_pref)
+
+    tentative_engagements = []
+    init_free_men(suitors, free_men)
+    stable_matching(free_men, suitors, suitors_pref, girls_pref, tentative_engagements, girls)
+
+
+    print()
+    print('Pairing:')
+    print_pairings(tentative_engagements)
+
+if __name__ == '__main__':
+    main()
