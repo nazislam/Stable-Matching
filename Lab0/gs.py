@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 
+# PROGRAM NAME: Gale-Shapely Algorithm
+# CREATED BY: Naz Islam
+# DATE: 02/23/2018
+# PURPOSE:
+# INPUT(S):
+
+
 import random
 import time
 
