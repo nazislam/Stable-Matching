@@ -2,6 +2,7 @@
 
 import random
 import time
+import sys
 
 
 def print_suitors_preferences(suitors, suitors_pref):
@@ -75,14 +76,17 @@ def generate_random_time():
     return random.randint(1, 10)
 
 def main():
+    length = (int(sys.argv[1])) // 10
+
+
     while True:
         start_time = time.time()
         start_clock = time.clock()
         time_to_sleep = generate_random_time()
         time.sleep(time_to_sleep)
 
-        suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
-        girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan']
+        suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon'] * length
+        girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan'] * length
 
 
         print('\nParticipants:')
@@ -97,12 +101,12 @@ def main():
         for i in range(0, len(suitors)):
             random.shuffle(girls)
             suitors_pref.append(girls)
-            girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan']
+            girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan'] * length
 
         for i in range(0, len(girls)):
             random.shuffle(suitors)
             girls_pref.append(suitors)
-            suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
+            suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon'] * length
         
 
         print('\nPreferences:')
