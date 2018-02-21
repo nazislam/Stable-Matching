@@ -116,7 +116,7 @@ def main(user_input):
     taken_clock = round(end_clock - start_clock, 6)
     print('{}\t{}s'.format(length, taken_clock))
     try:
-        fh = open('data.txt', 'a+')
+        fh = open('data.txt', 'w+')
         fh.write(str(length))
         fh.write('\t')
         fh.write(str(taken_clock))
