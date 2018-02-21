@@ -41,7 +41,8 @@ def begin_matching(man, suitors, suitors_pref, girls_pref, free_men,
     index = suitors.index(man)
     for woman in suitors_pref[index]:
 
-        taken_match = [couple for couple in tentative_engagements if woman in couple]
+        taken_match = [couple for couple in tentative_engagements 
+                if woman in couple]
         
         if (len(taken_match) == 0):
             tentative_engagements.append([man, woman])
@@ -49,7 +50,8 @@ def begin_matching(man, suitors, suitors_pref, girls_pref, free_men,
             break
         elif (len(taken_match) > 0):
 
-            current_guy = girls_pref[girls.index(woman)].index(taken_match[0][0])
+            current_guy = girls_pref[girls.index(woman)].index(
+                    taken_match[0][0])
             potential_guy = girls_pref[girls.index(woman)].index(man)
 
             if (current_guy > potential_guy):
@@ -87,7 +89,7 @@ def main(user_input):
 
     length = user_input
 
-    suitors = list(range(length)) # 20 (0 - 19)
+    suitors = list(range(length)) 
     girls = list(range(len(suitors), 2*(len(suitors))))
 
 
@@ -105,12 +107,13 @@ def main(user_input):
     for i in range(0, len(girls)):
         random.shuffle(suitors)
         girls_pref.append(suitors)
-        suitors = list(range(length)) # 20 (0 - 19)
+        suitors = list(range(length))
     
 
     tentative_engagements = []
     init_free_men(suitors, free_men)
-    stable_matching(free_men, suitors, suitors_pref, girls_pref, tentative_engagements, girls)
+    stable_matching(free_men, suitors, suitors_pref, girls_pref, 
+            tentative_engagements, girls)
 
 
     end_time = time.time()
@@ -119,7 +122,9 @@ def main(user_input):
     taken_clock = round(end_clock - start_clock, 6)
 
     try:
-        sys.argv[1]  # It will print participants and time if there is any user input
+        # It will print participants and time if there is any user input
+        # Otherwise, write results into data.txt
+        sys.argv[1]  
         print('{}\t{}'.format(length, taken_clock))
     except:
         fh = open('data.txt', 'a+')

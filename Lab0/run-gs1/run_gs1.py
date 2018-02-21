@@ -11,7 +11,8 @@ def generate_random_number():
 
 def main():
 
-    for i in range(0, 20): 
+    # for i in range(0, 20):      --> I'll keep this line
+    for i in range(0, 5): 
         trial_input = generate_random_number()
         gs1.main(trial_input)
     
