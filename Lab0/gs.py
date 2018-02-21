@@ -128,8 +128,8 @@ def main():
         end_clock = time.clock()
         taken_time = round(end_time - start_time, 6)
         taken_clock = round(end_clock - start_clock, 6)
-        print('Elapsed wall clock time:\t {}s'.format(taken_time))
-        print('Elapsed CPU time:\t\t {}s'.format(taken_clock))
+        print('Elapsed wall clock time:\t {}'.format(taken_time))
+        print('Elapsed CPU time:\t\t {}'.format(taken_clock))
         print('Stable matchup')
 
         k = input("\nAnother trial? (y)es, (n)o\n").lower()
