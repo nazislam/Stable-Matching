@@ -1,8 +1,0 @@
-y(x)=a+b*x+c*x**2
-fit y(x) "data.txt" via "guess.txt"
-set title "Gnuplot of Gale-Shapely Algorithm"
-set xlabel "Input size"
-set ylabel "Time(secs.)"
-set nokey
-plot y(x), "data.txt"
-pause -1
