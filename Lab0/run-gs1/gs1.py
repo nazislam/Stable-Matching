@@ -29,12 +29,15 @@ def init_free_men(suitors, free_men):
     for boy in suitors:
         free_men.append(boy)
 
-def stable_matching(free_men, suitors, suitors_pref, girls_pref, tentative_engagements, girls):
+def stable_matching(free_men, suitors, suitors_pref, girls_pref, 
+        tentative_engagements, girls):
     while(len(free_men) > 0):
         for man in free_men:
-            begin_matching(man, suitors, suitors_pref, girls_pref, free_men, tentative_engagements, girls)
+            begin_matching(man, suitors, suitors_pref, girls_pref, 
+                    free_men, tentative_engagements, girls)
 
-def begin_matching(man, suitors, suitors_pref, girls_pref, free_men, tentative_engagements, girls):
+def begin_matching(man, suitors, suitors_pref, girls_pref, free_men, 
+        tentative_engagements, girls):
     index = suitors.index(man)
     for woman in suitors_pref[index]:
 
@@ -114,15 +117,16 @@ def main(user_input):
     end_clock = time.clock()
     taken_time = round(end_time - start_time, 6)
     taken_clock = round(end_clock - start_clock, 6)
-    print('{}\t{}s'.format(length, taken_clock))
+
     try:
-        fh = open('data.txt', 'w+')
+        sys.argv[1]  # It will print participants and time if there is any user input
+        print('{}\t{}'.format(length, taken_clock))
+    except:
+        fh = open('data.txt', 'a+')
         fh.write(str(length))
         fh.write('\t')
         fh.write(str(taken_clock))
         fh.write('\n')
-    except:
-        print()
 
 
 

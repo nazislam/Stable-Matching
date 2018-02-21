@@ -6,7 +6,8 @@ import random
 from subprocess import call
 
 def generate_random_number():
-    return random.randint(1, 5500)
+    # return random.randint(1, 5500)   --> I'll keep this line
+    return random.randint(1, 55)
 
 def main():
 
