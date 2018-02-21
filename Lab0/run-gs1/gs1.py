@@ -115,6 +115,14 @@ def main(user_input):
     taken_time = round(end_time - start_time, 6)
     taken_clock = round(end_clock - start_clock, 6)
     print('{}\t{}s'.format(length, taken_clock))
+    try:
+        fh = open('data.txt', 'a+')
+        fh.write(str(length))
+        fh.write('\t')
+        fh.write(str(taken_clock))
+        fh.write('\n')
+    except:
+        print()
 
 
 
