@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 
-# PROGRAM NAME: Gale-Shapely Algorithm
+# PROGRAM NAME: Gale-Shapely Algorithm DEMO
 # CREATED BY: Naz Islam
 # DATE: 02/23/2018
-# PURPOSE:
+# PURPOSE: 
 # INPUT(S):
+# OUTPUT(S):
+
 
 
 import random
@@ -30,12 +32,15 @@ def init_free_men(suitors, free_men):
     for boy in suitors:
         free_men.append(boy)
 
-def stable_matching(free_men, suitors, suitors_pref, girls_pref, tentative_engagements, girls):
+def stable_matching(free_men, suitors, suitors_pref, girls_pref, 
+            tentative_engagements, girls):
     while(len(free_men) > 0):
         for man in free_men:
-            begin_matching(man, suitors, suitors_pref, girls_pref, free_men, tentative_engagements, girls)
+            begin_matching(man, suitors, suitors_pref, girls_pref,
+                    free_men, tentative_engagements, girls)
 
-def begin_matching(man, suitors, suitors_pref, girls_pref, free_men, tentative_engagements, girls):
+def begin_matching(man, suitors, suitors_pref, girls_pref, 
+            free_men, tentative_engagements, girls):
     index = suitors.index(man)
     for woman in suitors_pref[index]:
 
@@ -85,11 +90,15 @@ def main():
     while True:
         start_time = time.time()
         start_clock = time.clock()
+
+        # Generates random time (between 1 and 10s) to sleep for each execution
         time_to_sleep = generate_random_time()
         time.sleep(time_to_sleep)
 
-        suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
-        girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan']
+        suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 
+                   'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
+        girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 
+                 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan']
 
 
         print('\nParticipants:')
@@ -101,15 +110,19 @@ def main():
         free_men = []
 
 
+        # Generates preference list for suitos
         for i in range(0, len(suitors)):
             random.shuffle(girls)
             suitors_pref.append(girls)
-            girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 'Fay', 'Gay', 'Hope', 'Ivy', 'Jan']
+            girls = ['Abi', 'Bea', 'Cath', 'Dee', 'Eve', 
+                     'Fay', 'Gay', 'Hope', 'Ivy', 'Jan']
 
+        # Generates preference list for girls
         for i in range(0, len(girls)):
             random.shuffle(suitors)
             girls_pref.append(suitors)
-            suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
+            suitors = ['Abe', 'Bob', 'Col', 'Dan', 'Ed', 
+                       'Fred', 'Gav', 'Hal', 'Ian', 'Jon']
         
 
         print('\nPreferences:')
@@ -118,7 +131,8 @@ def main():
 
         tentative_engagements = []
         init_free_men(suitors, free_men)
-        stable_matching(free_men, suitors, suitors_pref, girls_pref, tentative_engagements, girls)
+        stable_matching(free_men, suitors, suitors_pref, girls_pref, 
+                tentative_engagements, girls)
 
 
         print('\nPairing:')
