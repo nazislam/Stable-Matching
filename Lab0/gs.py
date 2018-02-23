@@ -46,7 +46,8 @@ def begin_matching(man, suitors, suitors_pref, girls_pref,
 
         print('{} proposes to {}'.format(man, woman))
         # 0 means woman is single 
-        taken_match = [couple for couple in tentative_engagements if woman in couple]
+        taken_match = [couple for couple in tentative_engagements 
+                if woman in couple]
         
         if (len(taken_match) == 0):
             tentative_engagements.append([man, woman])
@@ -55,7 +56,8 @@ def begin_matching(man, suitors, suitors_pref, girls_pref,
             break
         elif (len(taken_match) > 0):
 
-            current_guy = girls_pref[girls.index(woman)].index(taken_match[0][0])
+            current_guy = girls_pref[girls.index(woman)].index(
+                    taken_match[0][0])
             potential_guy = girls_pref[girls.index(woman)].index(man)
 
             if (current_guy > potential_guy):
