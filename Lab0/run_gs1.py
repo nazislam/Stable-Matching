@@ -17,9 +17,16 @@ from subprocess import call
 def generate_random_number():
     """
     Accepts: It does not take any function arguments
-    Returns: A random integer between 1 and 5500 
+    Returns: A random number of input sizes between 1 and 5500 
     """
     return random.randint(1, 5500)
+
+def generate_random_size():
+    """
+    Accepts: It does not take any function arguments
+    Returns: A random number of iterations between 1 and 20
+    """
+    return random.randint(1, 20)
 
 def main():
     """
@@ -27,7 +34,7 @@ def main():
     Returns: Runs gs1 with different number of input size (1 - 5500), and
     call gnuplot program to perform the fit and plot the graph
     """
-    for i in range(0, 20):
+    for i in range(generate_random_size()):
         trial_input = generate_random_number()
         gs1.main(trial_input)
     
