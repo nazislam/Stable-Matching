@@ -34,6 +34,7 @@ def init_free_men(suitors, free_men):
 
 def stable_matching(free_men, suitors, suitors_pref, girls_pref, 
             tentative_engagements, girls):
+    # keep looping and find match until every man is engaged
     while(len(free_men) > 0):
         for man in free_men:
             begin_matching(man, suitors, suitors_pref, girls_pref,
@@ -45,22 +46,31 @@ def begin_matching(man, suitors, suitors_pref, girls_pref,
     for woman in suitors_pref[index]:
 
         print('{} proposes to {}'.format(man, woman))
-        # 0 means woman is single 
+        
+        # Get a tuple of women and her associated match. If it exists
+        # the tuple will be the suitor, and the girl.
+        # Otherwise it will return an empty list 
         taken_match = [couple for couple in tentative_engagements 
                 if woman in couple]
         
         if (len(taken_match) == 0):
+            # The woman is free.
+            # The man is engaged and no longer a free man.
             tentative_engagements.append([man, woman])
             free_men.remove(man)
             print('{} is engaged to {}'.format(man, woman))
             break
         elif (len(taken_match) > 0):
+            # The woman is not free.
 
             current_guy = girls_pref[girls.index(woman)].index(
                     taken_match[0][0])
             potential_guy = girls_pref[girls.index(woman)].index(man)
 
             if (current_guy > potential_guy):
+            # She will check if she prefers 
+            # potential_guy over the current_guy
+            # else the man proposes his next prefered woman
                 print('{} dumps {}'.format(woman, man))
 
                 # the new guy is engaged
@@ -86,6 +96,9 @@ def print_participants(suitors, girls):
     print()
 
 def generate_random_time():
+    """
+    Generates a random number between 1 and 10.
+    """
     return random.randint(1, 10)
 
 def main():
@@ -109,10 +122,11 @@ def main():
         suitors_pref = []
         girls_pref = []
 
+        # Suitors who are still free and not yet engaged
         free_men = []
 
 
-        # Generates preference list for suitos
+        # Generates preference list for suitors
         for i in range(0, len(suitors)):
             random.shuffle(girls)
             suitors_pref.append(girls)
@@ -131,6 +145,7 @@ def main():
         print_suitors_preferences(suitors, suitors_pref)
         print_girls_preferences(girls, girls_pref)
 
+        # Keeps track of the people that "may" end up together
         tentative_engagements = []
         init_free_men(suitors, free_men)
         stable_matching(free_men, suitors, suitors_pref, girls_pref, 
