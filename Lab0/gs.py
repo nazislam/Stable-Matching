@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# PROGRAM NAME: Stable Matching
+# PROGRAM NAME: Stable Matching (Lab 0)
 # CREATED BY: Naz Islam
 # DATE: 02/23/2018
 # PURPOSE: A demo of gale-shapely algorithm for a list of suitors and girls
